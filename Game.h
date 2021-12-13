@@ -9,6 +9,6 @@ public:
 	SceneBase* Update()override;
 	void Draw()override;
 private:
-
+	list<GameObjectBase*> objects_List;
 };
 

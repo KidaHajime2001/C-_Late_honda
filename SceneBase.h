@@ -10,7 +10,7 @@ public:
 	virtual void Draw();
 	
 private:
-	list<GameObjectBase*> objects_List;
+	
 };
 
 

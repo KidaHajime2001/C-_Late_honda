@@ -7,9 +7,7 @@ SceneBase::SceneBase()
 
 SceneBase::~SceneBase()
 {
-	for (auto obj : objects_List)
-		delete obj;
-	objects_List.clear();
+	
 
 }
 
