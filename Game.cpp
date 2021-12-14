@@ -1,3 +1,4 @@
+#include"pch.h"
 #include "Game.h"
 #include "Title.h"
 Game::Game()
@@ -22,4 +23,6 @@ SceneBase* Game::Update()
 
 void Game::Draw()
 {
+	db.setCursorPos(0, 0);
+	db.write("GAME SCENE");
 }

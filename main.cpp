@@ -1,40 +1,27 @@
 #include"pch.h"
 #include "DblBuffer.h"
 #include"Input.h"
+#include"SceneBase.h"
+#include"Title.h"
+#include"DblBuffer.h"
 int main()
 {
-    DblBuffer db;
     Input input;
-    for (int i = 0; i < 80 * 23; ++i) {
-        db.setCursorPos(0, 0);
-        db.write("using DblBuffer");
-        db.setCursorPos(0, 1);
-        for (int k = 0; k < 80 * 23; ++k) {
-            db.write(".");     //  îwåiï`âÊ
-        }
-        db.setCursorPos(i % 80, i / 80 + 1);
-        if (input.isKeyPressed(VK_UP))
+    DblBuffer db;
+    SceneBase* scene = new Title;
+    while (!input.isKeyPressed(VK_ESCAPE))
+    {
+        SceneBase* tmp ;
+        tmp=scene->Update();
+        scene->Draw();
+        if (scene!=tmp)
         {
-            db.write("Å™");   //  é©ã@ï`âÊ
+            delete scene;
+            scene = tmp;
         }
-        else if (input.isKeyPressed(VK_RIGHT))
-        {
-            db.write("Å®");   //  é©ã@ï`âÊ
-        }
-        else if (input.isKeyPressed(VK_DOWN))
-        {
-            db.write("Å´");   //  é©ã@ï`âÊ
-        }
-        else if (input.isKeyPressed(VK_LEFT))
-        {
-            db.write("Å©");   //  é©ã@ï`âÊ
-        }
-        else
-        {
-            db.write("ÇO");
-        }
-        db.swap();
+
         
-        Sleep(100);
     }
+    
+    delete scene;
 }

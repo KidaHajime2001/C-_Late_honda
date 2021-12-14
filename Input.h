@@ -9,15 +9,3 @@ public:
 private:
 
 };
-
-Input::Input()
-{
-}
-
-Input::~Input()
-{
-}
-inline bool Input::isKeyPressed(int vKey)
-{
-	return (GetAsyncKeyState(vKey) & 0x8000) != 0;
-}

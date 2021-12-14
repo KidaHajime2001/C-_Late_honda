@@ -1,16 +1,19 @@
 #pragma once
-#include"GameObject.h"
+#include"pch.h"
 #include"SceneBase.h"
-#include"Input.h"
-class Game:public SceneBase
+#include"DblBuffer.h"
+class NewGame:public SceneBase
 {
 public:
-	Game();
-	~Game();
+	NewGame();
+	~NewGame();
 	SceneBase* Update()override;
 	void Draw()override;
 private:
 	list<Object*> object_List;
-	DblBuffer db;
 	Input input;
+	DblBuffer db;
+
+	
 };
+

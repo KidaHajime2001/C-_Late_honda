@@ -149,10 +149,13 @@
   <ItemGroup>
     <ClCompile Include="DblBuffer.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="Input.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="pch.cpp" />
     <ClCompile Include="SceneBase.cpp" />
     <ClCompile Include="Title.cpp" />
+    <ClCompile Include="NewGame_Scene.cpp" />
+    <ClCompile Include="Title_Component.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Component.h" />
@@ -160,9 +163,11 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="Input.h" />
+    <ClInclude Include="NewGame_Scene.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="SceneBase.h" />
     <ClInclude Include="Title.h" />
+    <ClInclude Include="Title_Component.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

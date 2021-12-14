@@ -1,6 +1,7 @@
 #pragma once
 #include"pch.h"
 #include"Component.h"
+#include"DblBuffer.h"
 class Object
 {
 public:
@@ -16,10 +17,10 @@ public:
 		for (auto com : buff)
 			com->Update();
 	}
-	void Draw()
+	void Draw(DblBuffer& db)
 	{
 		for (auto com : ComponentList)
-			com->Draw();
+			com->Draw(db);
 	}
 	//オブジェクトが持っているコンポーネントを取得
 	template<class T>

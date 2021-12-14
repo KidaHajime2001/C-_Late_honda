@@ -46,7 +46,8 @@ public:
 	void write(const std::string&);
 	void write(const std::wstring&);
 	void swap();
-
+	HANDLE GetHandle01() { return (m_swapped ? m_hCons1 : m_hCons2); };
+	HANDLE GetHandle02() { return m_hCons2; };
 private:
 	bool			m_swapped;
 	HANDLE		m_hCons1;		//	コンソールハンドルその１
