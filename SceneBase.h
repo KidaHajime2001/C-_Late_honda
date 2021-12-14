@@ -1,6 +1,6 @@
 #pragma once
-#include"pch.h"
-#include"GameObjectBase.h"
+#include"Input.h"
+#include "GameObject.h"
 class SceneBase
 {
 public:
@@ -8,9 +8,6 @@ public:
 	virtual ~SceneBase();
 	virtual SceneBase* Update();
 	virtual void Draw();
-	
 private:
-	
+
 };
-
-

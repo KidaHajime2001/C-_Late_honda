@@ -1,39 +1,26 @@
-#include"pch.h"
+#include "pch.h"
 #include "Title.h"
-
+#include"Game.h"
 Title::Title()
 {
-	GameObjectBase* obj=new GameObjectBase;
-	SelectEnter* mSelectEnter = obj->AddComponent<SelectEnter>();
-	objects_List.push_back(obj);
-
-	mSelectEnter->AddText("ƒQ[ƒ€‚ðŽn‚ß‚é");
-	mSelectEnter->AddText("ƒQ[ƒ€‚ðI‚í‚é");
-	
-
 }
 
 Title::~Title()
 {
-	for (auto obj : objects_List)
+	for (auto obj : object_List)
 		delete obj;
-	objects_List.clear();
+	object_List.clear();
 }
 
 SceneBase* Title::Update()
 {
-	for (auto obj : objects_List)
-	{
-		obj->Update();
+	if (input.isKeyPressed(0x30))
+	{	
+		return new Game;
 	}
-    return this;
+	return this;
 }
 
 void Title::Draw()
 {
-	
-	for (auto obj : objects_List)
-	{
-		obj->Draw();
-	}
 }

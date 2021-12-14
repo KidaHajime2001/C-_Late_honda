@@ -1,19 +1,22 @@
-#include"pch.h"
 #include "Game.h"
-
+#include "Title.h"
 Game::Game()
 {
 }
 
 Game::~Game()
 {
-	for (auto obj : objects_List)
+	for (auto obj : object_List)
 		delete obj;
-	objects_List.clear();
+	object_List.clear();
 }
 
 SceneBase* Game::Update()
 {
+	if (input.isKeyPressed(0x30))
+	{
+		return new Title;
+	}
 	return this;
 }
 

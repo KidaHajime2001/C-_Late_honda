@@ -1,4 +1,4 @@
-#include"pch.h"
+#include "pch.h"
 #include "SceneBase.h"
 
 SceneBase::SceneBase()
@@ -7,8 +7,6 @@ SceneBase::SceneBase()
 
 SceneBase::~SceneBase()
 {
-	
-
 }
 
 SceneBase* SceneBase::Update()
