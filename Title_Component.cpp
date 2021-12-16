@@ -30,22 +30,16 @@ void TitleComponent::Update()
 
 void TitleComponent::Draw(DblBuffer& db)
 {
-	db.setCursorPos(TitleTextX, TitleTextY);
-	db.write("タイトルだよ");
+	
+	db.SetAndWrite(TitleTextX, TitleTextY,"タイトルだよ");
 
+	db.SetAndWrite(NewGameTextX, NewGameTextY, "新しく始める");
 
-	db.setCursorPos(NewGameTextX, NewGameTextY);
-	db.write("新しく始める");
+	db.SetAndWrite(ContinueTextX, ContinueTextY, "コンティニュー");
 
-	db.setCursorPos(ContinueTextX, ContinueTextY);
-	db.write("コンティニュー");
+	db.SetAndWrite(CursorTextX, NewGameTextY, "<");
 
-	db.setCursorPos(CursorTextX,NewGameTextY);
-	db.write("<");
+	db.SetAndWrite(CursorTextX, ContinueTextY, "<");
 
-	db.setCursorPos(CursorTextX, ContinueTextY);
-	db.write("<");
-
-	db.setCursorPos(CursorTextX, CursorTextY);
-	db.write(" ");
+	db.SetAndWrite(CursorTextX, CursorTextY ," ");
 }

@@ -16,66 +16,93 @@
     <Filter Include="ソース ファイル\Component">
       <UniqueIdentifier>{b88eb72f-1fe4-48cb-b053-0c355885479e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ヘッダー ファイル\Component">
+      <UniqueIdentifier>{3c6dab00-5477-4e61-a557-2fbe3888aee7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Scene">
+      <UniqueIdentifier>{734ad3d3-73e6-480b-a359-c754572e2e46}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\other">
+      <UniqueIdentifier>{258e217c-b4f1-4f90-a48e-94d7a5b64c5b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\other">
+      <UniqueIdentifier>{41e7939c-d23b-4ada-92db-f27ede62727b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Scene">
+      <UniqueIdentifier>{65df06a2-769a-42df-8565-892a12ff5039}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="pch.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="DblBuffer.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="SceneBase.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="Title.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="Game.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="Input.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="NewGame_Scene.cpp">
-      <Filter>ソース ファイル\Component</Filter>
-    </ClCompile>
     <ClCompile Include="Title_Component.cpp">
       <Filter>ソース ファイル\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="CreateStatus_Component.cpp">
+      <Filter>ソース ファイル\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="DblBuffer.cpp">
+      <Filter>ソース ファイル\other</Filter>
+    </ClCompile>
+    <ClCompile Include="Input.cpp">
+      <Filter>ソース ファイル\other</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>ソース ファイル\other</Filter>
+    </ClCompile>
+    <ClCompile Include="pch.cpp">
+      <Filter>ソース ファイル\other</Filter>
+    </ClCompile>
+    <ClCompile Include="Status_Component.cpp">
+      <Filter>ソース ファイル\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>ソース ファイル\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneBase.cpp">
+      <Filter>ソース ファイル\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Title.cpp">
+      <Filter>ソース ファイル\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="NewGame_Scene.cpp">
+      <Filter>ソース ファイル\Scene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Component.h">
-      <Filter>ソース ファイル</Filter>
+      <Filter>ヘッダー ファイル\Component</Filter>
     </ClInclude>
-    <ClInclude Include="pch.h">
-      <Filter>ソース ファイル</Filter>
+    <ClInclude Include="CreateStatus_Component.h">
+      <Filter>ヘッダー ファイル\Component</Filter>
     </ClInclude>
-    <ClInclude Include="GameObject.h">
-      <Filter>ソース ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="Input.h">
-      <Filter>ソース ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="DblBuffer.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="SceneBase.h">
-      <Filter>ソース ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="Title.h">
-      <Filter>ソース ファイル</Filter>
+    <ClInclude Include="Status_Component.h">
+      <Filter>ヘッダー ファイル\Component</Filter>
     </ClInclude>
     <ClInclude Include="Game.h">
-      <Filter>ソース ファイル</Filter>
+      <Filter>ヘッダー ファイル\Scene</Filter>
     </ClInclude>
     <ClInclude Include="NewGame_Scene.h">
-      <Filter>ソース ファイル\Component</Filter>
+      <Filter>ヘッダー ファイル\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneBase.h">
+      <Filter>ヘッダー ファイル\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Title.h">
+      <Filter>ヘッダー ファイル\Scene</Filter>
     </ClInclude>
     <ClInclude Include="Title_Component.h">
-      <Filter>ソース ファイル\Component</Filter>
+      <Filter>ヘッダー ファイル\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="DblBuffer.h">
+      <Filter>ヘッダー ファイル\other</Filter>
+    </ClInclude>
+    <ClInclude Include="Input.h">
+      <Filter>ヘッダー ファイル\other</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject.h">
+      <Filter>ヘッダー ファイル\other</Filter>
+    </ClInclude>
+    <ClInclude Include="pch.h">
+      <Filter>ヘッダー ファイル\other</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

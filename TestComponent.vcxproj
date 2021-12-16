@@ -147,18 +147,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="CreateStatus_Component.cpp" />
     <ClCompile Include="DblBuffer.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="pch.cpp" />
     <ClCompile Include="SceneBase.cpp" />
+    <ClCompile Include="Status_Component.cpp" />
     <ClCompile Include="Title.cpp" />
     <ClCompile Include="NewGame_Scene.cpp" />
     <ClCompile Include="Title_Component.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Component.h" />
+    <ClInclude Include="CreateStatus_Component.h" />
     <ClInclude Include="DblBuffer.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameObject.h" />
@@ -166,6 +169,7 @@
     <ClInclude Include="NewGame_Scene.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="SceneBase.h" />
+    <ClInclude Include="Status_Component.h" />
     <ClInclude Include="Title.h" />
     <ClInclude Include="Title_Component.h" />
   </ItemGroup>

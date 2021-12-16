@@ -101,3 +101,64 @@ void DblBuffer::swap()
 		SetConsoleActiveScreenBuffer(m_hCons1);
 	}
 }
+
+void DblBuffer::SetAndWrite(int x, int y, const char* str)
+{
+	setCursorPos(x,y);
+	write(str);
+}
+
+void DblBuffer::SetAndWrite(int x, int y, const wchar_t* str)
+{
+	setCursorPos(x, y);
+	write(str);
+}
+
+void DblBuffer::SetAndWrite(int x, int y, const std::string& str)
+{
+	setCursorPos(x, y);
+	write(str);
+}
+
+void DblBuffer::SetAndWrite(int x, int y, const std::wstring& str)
+{
+	setCursorPos(x, y);
+	write(str);
+}
+
+void DblBuffer::SetAndWrite(int x, int y, int z)
+{
+	setCursorPos(x, y);
+	write(std::to_string(z));
+}
+
+void DblBuffer::SetAndWriteAndNum(int x, int y, const char* str, const int* num)
+{
+	string textSum=str;
+	textSum = textSum + std::to_string(*num);
+	setCursorPos(x, y);
+	write(textSum);
+}
+
+
+void DblBuffer::SetAndWriteAndNum(int x, int y, const std::string& str, const int* num)
+{
+	string textSum = str;
+	textSum += std::to_string(*num);
+	setCursorPos(x, y);
+	write(textSum);
+}
+
+void DblBuffer::Clear()
+{
+	for (int  i = 0; i < 100; i++)
+	{
+		for (int  j = 0; j < 100; j++)
+		{
+			setCursorPos(i, j);
+			write(" ");
+		}
+	}
+}
+
+

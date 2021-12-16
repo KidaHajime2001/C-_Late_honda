@@ -46,8 +46,28 @@ public:
 	void write(const std::string&);
 	void write(const std::wstring&);
 	void swap();
+	void SetAndWrite(int, int, const char*);
+	void SetAndWrite(int, int, const wchar_t*);
+	void SetAndWrite(int, int, const std::string&);
+	void SetAndWrite(int, int, const std::wstring&);
+	void SetAndWrite(int, int, int);
+	void SetAndWriteAndNum(int, int, const char*			, const int* num = nullptr);/*
+	void SetAndWrite(int, int, const wchar_t*		, const int* num = nullptr);*/
+	void SetAndWriteAndNum(int, int, const std::string&	, const int* num = nullptr);/*
+	void SetAndWrite(int, int, const std::wstring&	, const int* num = nullptr);*/
 	HANDLE GetHandle01() { return (m_swapped ? m_hCons1 : m_hCons2); };
 	HANDLE GetHandle02() { return m_hCons2; };
+	void Clear();
+
+
+	template <typename ... Args>
+	string format(const std::string& fmt, Args ... args)
+	{
+		size_t len = std::snprintf(nullptr, 0, fmt.c_str(), args ...);
+		std::vector<char> buf(len + 1);
+		std::snprintf(&buf[0], len + 1, fmt.c_str(), args ...);
+		return std::string(&buf[0], &buf[0] + len);
+	}
 private:
 	bool			m_swapped;
 	HANDLE		m_hCons1;		//	コンソールハンドルその１
