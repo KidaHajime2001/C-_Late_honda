@@ -22,6 +22,7 @@ private:
 	ChoiseState mState;			  //状態
 	Status mStatus;				  //割り振り後渡すステータス
 	int CursolPosY = 0;			  //カーソルの位置
+	int CursolPosX = 0;			  //カーソルの位置
 	Input input;				  //入力用
 	map<int, int> CursolAndStatus;//選択した際の確認用マップ
 	map<int, string> CursolAndStatusName;//選択した際の確認用マップ
@@ -30,5 +31,9 @@ private:
 	//残りポイント
 	int StatusPoint = 100;
 	const int StatusPointMax = 100;
+
+	int _1stNum=0;
+	int _2stNum = 0;
+	int StatusPointTest = 0;
 };
 

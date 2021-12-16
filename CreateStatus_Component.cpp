@@ -53,12 +53,82 @@ void CreateStatus::Update()
 		if (input.isKeyPressed(VK_RETURN))
 		{
 			mState = InputStatus;
+			return;
 		}
 		Sleep(50);
 	}
 	if (mState == ChoiseState::InputStatus)
 	{
+		if (input.isKeyPressed(VK_UP))
+		{
+			if (CursolPosX==1)
+			{
+				_2stNum++;
+				if (_2stNum >9)
+				{
+					_2stNum = 0;
+				}
+			}
+			if (CursolPosX == 0)
+			{
+				_1stNum++;
+				if (_1stNum > 9)
+				{
+					_1stNum = 0;
+				}
+			}
 
+			StatusPointTest = ((_2stNum * 10) + _1stNum);
+		}
+		if (input.isKeyPressed(VK_DOWN))
+		{
+			if (CursolPosX == 1)
+			{
+				_2stNum--;
+				if (_2stNum<0)
+				{
+					_2stNum = 9;
+				}
+			}
+			if (CursolPosX == 0)
+			{
+				_1stNum--;
+				if (_1stNum < 0)
+				{
+					_1stNum = 9;
+				}
+			}
+
+			StatusPointTest = ((_2stNum * 10) + _1stNum);
+			
+		}
+		if (input.isKeyPressed(VK_RIGHT))
+		{
+			CursolPosX--;
+			if (CursolPosX < 0)
+			{
+				CursolPosX = 0;
+			}
+		}
+		if (input.isKeyPressed(VK_LEFT))
+		{
+			CursolPosX++;
+			if (CursolPosX > 1)
+			{
+				CursolPosX = 1;
+			}
+		}
+		if (input.isKeyPressed(VK_RETURN))
+		{
+			
+			CursolAndStatus[CursolPosY] += StatusPointTest;
+			StatusPoint -= StatusPointTest;
+			mState = choiseStatus;
+			_1stNum = 0;
+			_2stNum = 0;
+			StatusPointTest = 0;
+		}
+		Sleep(50);
 	}
 	if (mState == ChoiseState::Confimation)
 	{
@@ -76,31 +146,55 @@ void CreateStatus::Draw(DblBuffer& db)
 	{
 		db.SetAndWrite(0, 0, "ステータスを作成してください");
 		db.SetAndWrite(0, 15, CursolPosY);
-		db.SetAndWriteAndNum(0, 2, "HP  :",&mStatus.HP);
-		db.SetAndWriteAndNum(0, 3, "MP  :", &mStatus.MP);
-		db.SetAndWriteAndNum(0, 4, "ATK :",&mStatus.ATK);
-		db.SetAndWriteAndNum(0, 5, "DFP :",&mStatus.DFP);
-		db.SetAndWriteAndNum(0, 6, "AGI :",&mStatus.AGI);
+		db.SetAndWriteAndNum(0, 2, "HP  :",&CursolAndStatus[0]);
+		db.SetAndWriteAndNum(0, 3, "MP  :", &CursolAndStatus[1]);
+		db.SetAndWriteAndNum(0, 4, "ATK :", &CursolAndStatus[2]);
+		db.SetAndWriteAndNum(0, 5, "DFP :", &CursolAndStatus[3]);
+		db.SetAndWriteAndNum(0, 6, "AGI :", &CursolAndStatus[4]);
 		for (int i = 0; i < 5; i++)
 		{
 			if (CursolPosY == i)
 			{
 				continue;
 			}
-			db.SetAndWrite(6, i + 2, " ");
+			db.SetAndWrite(8, i + 2, " ");
 		}
-		db.SetAndWrite(6, CursolPosY + 2, "<");
+		db.SetAndWrite(8, CursolPosY + 2, "<");
 	}
 	if (mState == ChoiseState::InputStatus)
 	{
+		int x_1st = 0;
+		int x_2st = 1;
+		
+		
+		
 		string str = CursolAndStatusName[CursolPosY]+"  :";
 		db.SetAndWrite(0, 0, "割り振るポイントを入力して下さい");
-		db.SetAndWriteAndNum(0, 2, str, &CursolAndStatus[CursolPosY]);
+		db.SetAndWriteAndNum(0, 2, str,& CursolAndStatus[CursolPosY]);
+		int tmp = StatusPoint - StatusPointTest;
+		db.SetAndWrite(0, 4, "                   ");
+		db.SetAndWriteAndNum(0, 4, "残りポイント  :" ,&tmp);
 		
-		db.SetAndWriteAndNum(0, 5, "残りポイント  :" ,&StatusPoint);
-		db.setCursorPos(0, 6);
-		int tmpPoint;
-		cin >> tmpPoint;
+		if (CursolPosX!=x_1st)
+		{
+			db.SetAndWrite(x_1st, 6, "∧");
+			db.SetAndWrite(x_1st, 8, "∨");
+		}
+		if (CursolPosX != x_2st)
+		{
+			db.SetAndWrite(x_2st, 6, "∧");
+			db.SetAndWrite(x_2st, 8, "∨");
+		}
+		
+		db.SetAndWrite(CursolPosX, 6, "　");
+		db.SetAndWrite(CursolPosX, 8, "　");
+		
+
+
+
+		db.SetAndWrite(1, 7,_2stNum);
+		db.SetAndWrite(3, 7,_1stNum);
+
 
 
 	}
