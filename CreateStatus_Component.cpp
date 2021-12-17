@@ -45,15 +45,19 @@ void CreateStatus::Update()
 		if (input.isKeyPressed(VK_DOWN))
 		{
 			CursolPosY++;
-			if (CursolPosY > 4)
+			if (CursolPosY > 6)
 			{
-				CursolPosY = 4;
+				CursolPosY = 6;
 			}
 		}
 		if (input.isKeyPressed(VK_RETURN))
 		{
-			mState = InputStatus;
-			return;
+			if (CursolPosY < 5)
+			{
+				mState = InputStatus;
+				return;
+			}
+			
 		}
 		Sleep(50);
 	}
@@ -118,9 +122,8 @@ void CreateStatus::Update()
 				CursolPosX = 1;
 			}
 		}
-		if (input.isKeyPressed(VK_RETURN))
+		if (input.isKeyPressed(VK_RETURN)&&(StatusPoint -StatusPointTest)>=0)
 		{
-			
 			CursolAndStatus[CursolPosY] += StatusPointTest;
 			StatusPoint -= StatusPointTest;
 			mState = choiseStatus;
@@ -128,6 +131,7 @@ void CreateStatus::Update()
 			_2stNum = 0;
 			StatusPointTest = 0;
 		}
+		
 		Sleep(50);
 	}
 	if (mState == ChoiseState::Confimation)
@@ -151,7 +155,8 @@ void CreateStatus::Draw(DblBuffer& db)
 		db.SetAndWriteAndNum(0, 4, "ATK :", &CursolAndStatus[2]);
 		db.SetAndWriteAndNum(0, 5, "DFP :", &CursolAndStatus[3]);
 		db.SetAndWriteAndNum(0, 6, "AGI :", &CursolAndStatus[4]);
-		for (int i = 0; i < 5; i++)
+		db.SetAndWrite(0, 8, "決定");
+		for (int i = 0; i < 8; i++)
 		{
 			if (CursolPosY == i)
 			{
@@ -189,7 +194,10 @@ void CreateStatus::Draw(DblBuffer& db)
 		db.SetAndWrite(CursolPosX, 6, "　");
 		db.SetAndWrite(CursolPosX, 8, "　");
 		
-
+		if(input.isKeyPressed(VK_RETURN)&& (StatusPoint - StatusPointTest) < 0)
+		{
+			db.SetAndWrite(0,10,"割り振るポイントが超過しています");
+		}
 
 
 		db.SetAndWrite(1, 7,_2stNum);
