@@ -12,5 +12,6 @@
 #include<vector>
 #include <sstream>
 #include <iomanip>
+#include <ios>     // std::left, std::right
 const int MAX_PARTY_MENBER_NUM = 3;
 using namespace std;

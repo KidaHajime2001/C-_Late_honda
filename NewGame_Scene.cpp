@@ -7,9 +7,10 @@
 NewGame::NewGame()
 {
 	Object* obj = new Object;
-	obj->AddComponent<CreateStatus>();
+	Cs=obj->AddComponent<CreateStatus>();
 
 	object_List.push_back(obj);
+
 }
 
 NewGame::~NewGame()
@@ -22,11 +23,12 @@ NewGame::~NewGame()
 
 SceneBase* NewGame::Update()
 {
+	
 	for (auto obj : object_List)
 	{
 		obj->Update();
 	}
-	if (input.isKeyPressed(0x30))
+	if (input.isKeyPressed(0x30)||Cs->Get_IsCreateData())
 	{
 		return new Title;
 	}

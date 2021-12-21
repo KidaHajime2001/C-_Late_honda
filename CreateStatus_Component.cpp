@@ -57,11 +57,13 @@ void CreateStatus::Update()
 			//決定キーにカーソルがあっているとき
 			if (CursolPosY==6)
 			{
-				if (party_s_num<3)
+				if (party_s_num < 2)
 				{
 					party_s_num++;
 					setStatusMap(mStatus[party_s_num]);
 					Initialize_Variable();
+					mState = Confimation;
+					return;
 				}
 				else
 				{
@@ -76,6 +78,7 @@ void CreateStatus::Update()
 					}
 					
 					fclose(fp);//ファイルを閉じる
+					isCreateData = true;
 				}
 			}
 			//カーソル位置がステータスにあっているときに状態遷移
@@ -242,11 +245,10 @@ void CreateStatus::Draw(DblBuffer& db)
 	}
 	if (mState == ChoiseState::Confimation)
 	{
-		
+		db.Clear();
+		mState = choiseStatus;
 
-520
-3
-33o	}
+	}
 }
 
 void CreateStatus::setStatusMap(Status TmpS)

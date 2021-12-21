@@ -169,6 +169,7 @@
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="pch.cpp" />
+    <ClCompile Include="Scenario_Scene.cpp" />
     <ClCompile Include="SceneBase.cpp" />
     <ClCompile Include="Title.cpp" />
     <ClCompile Include="NewGame_Scene.cpp" />
@@ -183,6 +184,7 @@
     <ClInclude Include="Input.h" />
     <ClInclude Include="NewGame_Scene.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="Scenario_Scene.h" />
     <ClInclude Include="SceneBase.h" />
     <ClInclude Include="Status.h" />
     <ClInclude Include="Title.h" />

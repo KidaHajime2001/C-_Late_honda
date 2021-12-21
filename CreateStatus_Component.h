@@ -14,6 +14,7 @@ public:
 	void Draw(DblBuffer& db);
 	void setStatusMap(Status TmpS);
 	void Initialize_Variable();
+	bool Get_IsCreateData() { return  isCreateData; };
 	enum ChoiseState
 	{
 		choiseStatus,//‘I‘ð
@@ -42,6 +43,6 @@ private:
 	int StatusPointTest = 0;
 
 	int party_s_num = 0;
-	
+	bool isCreateData=false;
 };
 

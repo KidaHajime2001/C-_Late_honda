@@ -2,6 +2,7 @@
 #include"pch.h"
 #include"SceneBase.h"
 #include"DblBuffer.h"
+#include"CreateStatus_Component.h"
 class NewGame:public SceneBase
 {
 public:
@@ -12,8 +13,8 @@ public:
 private:
 	list<Object*> object_List;
 	Input input;
-	DblBuffer db;
-
+	class DblBuffer db;
+	class CreateStatus* Cs;
 	
 };
 

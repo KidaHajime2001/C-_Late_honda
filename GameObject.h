@@ -13,6 +13,7 @@ public:
 	list<Component*> ComponentList;
 	void Update()
 	{
+		
 		auto buff = ComponentList;
 		for (auto com : buff)
 			com->Update();
