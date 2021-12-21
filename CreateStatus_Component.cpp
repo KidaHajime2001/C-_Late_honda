@@ -1,22 +1,18 @@
 #include "pch.h"
 #include "CreateStatus_Component.h"
 
-
 CreateStatus::CreateStatus()
 	:BeforeState(choiseStatus)
 	,mState(choiseStatus)
 {
-	CursolAndStatus[0] = mStatus.HP ;
-	CursolAndStatus[1] = mStatus.MP ;
-	CursolAndStatus[2] = mStatus.ATK;
-	CursolAndStatus[3] = mStatus.DFP;
-	CursolAndStatus[4] = mStatus.AGI;
+	//mapでカーソル位置からステータスを見つける
+	setStatusMap(mStatus[0]);
+	//mapでカーソル位置からステータス名を見つける
 	CursolAndStatusName[0] = "HP ";
 	CursolAndStatusName[1] = "MP ";
 	CursolAndStatusName[2] = "ATK";
 	CursolAndStatusName[3] = "DFP";
 	CursolAndStatusName[4] = "AGI";
-
 }
 
 CreateStatus::~CreateStatus()
@@ -31,11 +27,16 @@ void CreateStatus::Start()
 
 void CreateStatus::Update()
 {
+	//前フレームと入力状態をすり合わせる
 	BeforeState = mState;
+
+	//入力ステータスの選択画面
 	if (mState==ChoiseState::choiseStatus)
 	{
+		//↑を推されたとき
 		if (input.isKeyPressed(VK_UP))
 		{
+			//選択カーソルの位置を上に、カーソルの位置が最上だったら変化なし
 			CursolPosY--;
 			if (CursolPosY < 0)
 			{
@@ -44,6 +45,7 @@ void CreateStatus::Update()
 		}
 		if (input.isKeyPressed(VK_DOWN))
 		{
+			//選択カーソルの位置を下に、カーソルの位置が最低だったら変化なし
 			CursolPosY++;
 			if (CursolPosY > 6)
 			{
@@ -52,15 +54,44 @@ void CreateStatus::Update()
 		}
 		if (input.isKeyPressed(VK_RETURN))
 		{
+			//決定キーにカーソルがあっているとき
+			if (CursolPosY==6)
+			{
+				if (party_s_num<3)
+				{
+					party_s_num++;
+					setStatusMap(mStatus[party_s_num]);
+					Initialize_Variable();
+				}
+				else
+				{
+					for (int i = 0; i < MAX_PARTY_MENBER_NUM; i++)
+					{
+						Party_s.player[i] = mStatus[i];
+					}
+					FILE* fp = fopen("PartyData.dat", "wb");//バイナリファイルを開く
+					if (fp!=NULL)
+					{
+						fwrite(&Party_s, sizeof(Party_Status), 1, fp); // SaveData_t構造体の中身を出力
+					}
+					
+					fclose(fp);//ファイルを閉じる
+				}
+			}
+			//カーソル位置がステータスにあっているときに状態遷移
 			if (CursolPosY < 5)
 			{
+				
 				mState = InputStatus;
 				return;
 			}
 			
+			
 		}
-		Sleep(50);
+		//ちょっと入力遅延
+		Sleep(75);
 	}
+	//割りフルステータス選択
 	if (mState == ChoiseState::InputStatus)
 	{
 		if (input.isKeyPressed(VK_UP))
@@ -131,8 +162,8 @@ void CreateStatus::Update()
 			_2stNum = 0;
 			StatusPointTest = 0;
 		}
-		
-		Sleep(50);
+		//ちょっと入力遅延
+		Sleep(75);
 	}
 	if (mState == ChoiseState::Confimation)
 	{
@@ -150,7 +181,10 @@ void CreateStatus::Draw(DblBuffer& db)
 	{
 		db.SetAndWrite(0, 0, "ステータスを作成してください");
 		db.SetAndWrite(0, 15, CursolPosY);
-		db.SetAndWriteAndNum(0, 2, "HP  :",&CursolAndStatus[0]);
+
+		db.SetAndWrite(0, 1, "name:");
+		db.SetAndWrite(5, 1, mStatus[party_s_num].name);
+		db.SetAndWriteAndNum(0, 2, "HP  :", &CursolAndStatus[0]);
 		db.SetAndWriteAndNum(0, 3, "MP  :", &CursolAndStatus[1]);
 		db.SetAndWriteAndNum(0, 4, "ATK :", &CursolAndStatus[2]);
 		db.SetAndWriteAndNum(0, 5, "DFP :", &CursolAndStatus[3]);
@@ -208,11 +242,33 @@ void CreateStatus::Draw(DblBuffer& db)
 	}
 	if (mState == ChoiseState::Confimation)
 	{
+		
 
-	}
+520
+3
+33o	}
 }
 
-Status CreateStatus::PathStatus()
+void CreateStatus::setStatusMap(Status TmpS)
 {
-	return mStatus;
+		CursolAndStatus[0] = TmpS.HP;
+		CursolAndStatus[1] = TmpS.MP;
+		CursolAndStatus[2] = TmpS.ATK;
+		CursolAndStatus[3] = TmpS.DFP;
+		CursolAndStatus[4] = TmpS.AGI;
+	
 }
+
+void CreateStatus::Initialize_Variable()
+{
+	StatusPoint = 100;
+
+	_1stNum = 0;
+	_2stNum = 0;
+	StatusPointTest = 0;
+
+	BeforeState = choiseStatus;
+	mState = choiseStatus;
+	
+}
+

@@ -51,9 +51,6 @@
     <ClCompile Include="pch.cpp">
       <Filter>ソース ファイル\other</Filter>
     </ClCompile>
-    <ClCompile Include="Status_Component.cpp">
-      <Filter>ソース ファイル\Component</Filter>
-    </ClCompile>
     <ClCompile Include="Game.cpp">
       <Filter>ソース ファイル\Scene</Filter>
     </ClCompile>
@@ -74,7 +71,7 @@
     <ClInclude Include="CreateStatus_Component.h">
       <Filter>ヘッダー ファイル\Component</Filter>
     </ClInclude>
-    <ClInclude Include="Status_Component.h">
+    <ClInclude Include="Status.h">
       <Filter>ヘッダー ファイル\Component</Filter>
     </ClInclude>
     <ClInclude Include="Game.h">

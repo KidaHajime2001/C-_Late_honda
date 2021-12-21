@@ -2,12 +2,13 @@
 #include"NewGame_Scene.h"
 #include"Game.h"
 #include"Title.h"
-#include"Status_Component.h"
+#include"Status.h"
 #include"CreateStatus_Component.h"
 NewGame::NewGame()
 {
 	Object* obj = new Object;
 	obj->AddComponent<CreateStatus>();
+
 	object_List.push_back(obj);
 }
 

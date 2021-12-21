@@ -2,7 +2,8 @@
 #include"pch.h"
 #include"Input.h"
 #include"Component.h"
-#include"Status_Component.h"
+#include"Status.h"
+
 class CreateStatus:public Component
 {
 public:
@@ -11,7 +12,8 @@ public:
 	void Start();
 	void Update();
 	void Draw(DblBuffer& db);
-	Status PathStatus();
+	void setStatusMap(Status TmpS);
+	void Initialize_Variable();
 	enum ChoiseState
 	{
 		choiseStatus,//選択
@@ -20,7 +22,10 @@ public:
 	};
 private:
 	ChoiseState mState;			  //状態
-	Status mStatus;				  //割り振り後渡すステータス
+	Status mStatus[3] = { {"1",1,1,1,1,1,1,} ,
+						  {"2",1,1,1,1,1,1,},
+						  {"3",1,1,1,1,1,1,} };				  //割り振り後渡すステータス
+	Party_Status Party_s;
 	int CursolPosY = 0;			  //カーソルの位置
 	int CursolPosX = 0;			  //カーソルの位置
 	Input input;				  //入力用
@@ -35,5 +40,8 @@ private:
 	int _1stNum=0;
 	int _2stNum = 0;
 	int StatusPointTest = 0;
+
+	int party_s_num = 0;
+	
 };
 
