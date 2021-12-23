@@ -2,7 +2,7 @@
 #include"pch.h"
 #include"SceneBase.h"
 #include"DblBuffer.h"
-
+#include"ScenarioObj.h"
 class Scenario :public SceneBase
 {
 public:
@@ -10,10 +10,10 @@ public:
 	~Scenario();
 	SceneBase* Update();
 	void Draw();
-	int getStrFromText(string filename, vector<string>& vstr);
-	void Outputtext(vector<string> vstr_stage);
+	
 private:
 	list<Object*> object_List;
 	DblBuffer db;
 	Input input;
+	
 };

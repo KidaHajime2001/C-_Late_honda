@@ -1,38 +1,43 @@
 #include"pch.h"
 #include "Scenario_Scene.h"
+#include"Title.h"
 
 Scenario::Scenario()
 {
-}
+	Object* obj = new ScenarioObj;
+	object_List.push_back(obj);
 
+}
 Scenario::~Scenario()
 {
 }
 
+
+
 SceneBase* Scenario::Update()
 {
-	return nullptr;
+	for (auto obj : object_List)
+	{
+		obj->Update();
+	}
+	if (input.isKeyPressed(0x30))
+	{
+		return new Title;
+	}
+	return this;
 }
 
 void Scenario::Draw()
 {
-}
-int Scenario::getStrFromText(string filename, vector<string>& vstr)
-{
-	ifstream ifs(filename);
-
-	if (!ifs)
+	db.setCursorPos(0, 0);/*
+	db.write("NEW GAME CREATE SCENE");*/
+	for (auto obj : object_List)
 	{
-		cout << "error :>> failed to open the text file." << endl;
-		return 1;
+		obj->Draw(db);
 	}
-
-	string tmp;
-	while (getline(ifs, tmp))
-		vstr.push_back(tmp);
-
-	return 0;
 }
+
+
 //#include"conversation.h"
 //
 //Conversation::Conversation(string name1, string name2, string name3)

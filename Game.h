@@ -15,4 +15,7 @@ private:
 	DblBuffer db;
 	Input input;
 	Party_Status ps;
+	Status status[MAX_PARTY_MENBER_NUM];
+	FILE* fp;
+	const char* name = "PartyData.dat";
 };

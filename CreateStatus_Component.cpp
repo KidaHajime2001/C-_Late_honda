@@ -71,14 +71,19 @@ void CreateStatus::Update()
 					{
 						Party_s.player[i] = mStatus[i];
 					}
-					FILE* fp = fopen("PartyData.dat", "wb");//バイナリファイルを開く
-					if (fp!=NULL)
+					FILE* fp;//バイナリファイルを開く
+					if ((fp=fopen("PartyData.dat", "wb")) ==NULL)
+					{
+						
+					}
+					else
 					{
 						fwrite(&Party_s, sizeof(Party_Status), 1, fp); // SaveData_t構造体の中身を出力
+						fclose(fp);//ファイルを閉じる
+						isCreateData = true;
 					}
 					
-					fclose(fp);//ファイルを閉じる
-					isCreateData = true;
+					
 				}
 			}
 			//カーソル位置がステータスにあっているときに状態遷移

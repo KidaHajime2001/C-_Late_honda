@@ -4,6 +4,7 @@
 #include"Title.h"
 #include"Status.h"
 #include"CreateStatus_Component.h"
+#include"Scenario_Scene.h"
 NewGame::NewGame()
 {
 	Object* obj = new Object;
@@ -30,7 +31,7 @@ SceneBase* NewGame::Update()
 	}
 	if (input.isKeyPressed(0x30)||Cs->Get_IsCreateData())
 	{
-		return new Title;
+		return new Scenario;
 	}
 	return this;
 }

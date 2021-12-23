@@ -22,6 +22,6 @@ int main()
 
         
     }
-    
-    delete scene;
+    /*
+    delete scene*/;
 }
